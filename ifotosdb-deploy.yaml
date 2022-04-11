@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ifotosdb-deployment
+  labels:
+    app: ifotosdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ifotosdb
+  template:
+    metadata:
+      labels:
+        app: ifotosdb
+    spec:
+      containers:
+      - name: ifotosdb
+        image: ifotosdb:latest
+        ports:
+        - containerPort: 3306
+        env:
+        - name: IFOTOS_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: ifotosdb-secret
+              key: ifotosdb-root-username
+        - name: IFOTOS_INITDB_ROOT_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: ifotosdb-secret
+              key: ifotos-root-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ifotosdb-service
+spec:
+  selector:
+    app: ifotosdb
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306

@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ifotos
+  labels:
+    app: ifotos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ifotos
+  template:
+    metadata:
+      labels:
+        app: ifotos
+    spec:
+      containers:
+      - name: ifotos
+        image: ifotos
+        ports:
+        - containerPort: 3000
+        env:
+        - name: ME_CONFIG_IFOTOSDB_ADMINUSERNAME
+          valueFrom:
+            secretKeyRef:
+              name: ifotosdb-secret
+              key: ifotos-root-username
+        - name: ME_CONFIG_IFOTOSDB_ADMINPASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: ifotosdb-secret
+              key: ifotos-root-password
+        - name: ME_CONFIG_IFOTOSDB_SERVER
+          valueFrom: 
+            configMapKeyRef:
+              name: ifotosdb-configmap
+              key: database_url
+---
+#External service-- Type Loadbalancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: ifotos-service
+spec:
+  selector:
+    app: ifotos
+  type: LoadBalancer  
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 3000
+      nodePort: 30000
