@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ifotos
-        image: ifotos
+        image: ifriedman7/ifotos:latest
         ports:
         - containerPort: 3000
         env:
