@@ -17,6 +17,8 @@ spec:
       containers:
       - name: ifotosdb
         image: ifriedman7/ifotosdb:latest
+        securityContext:
+          privileged: true
         ports:
         - containerPort: 3306
         env:
