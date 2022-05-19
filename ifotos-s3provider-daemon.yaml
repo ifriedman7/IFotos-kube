@@ -32,3 +32,15 @@ spec:
             configMapKeyRef:
               name: ifotos-configmap
               key: AWS_S3_BUCKET
+        volumeMounts:
+        - name: devfuse
+          mountPath: /dev/fuse
+        - name: mntdatas3fs
+          mountPath: /var/s3fs:shared
+      volumes:
+      - name: devfuse
+        hostPath:
+          path: /dev/fuse
+      - name: mntdatas3fs
+        hostPath:
+          path: /home/s3data

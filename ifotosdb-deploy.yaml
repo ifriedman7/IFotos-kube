@@ -19,6 +19,9 @@ spec:
         image: ifriedman7/ifotosdb:latest
         securityContext:
           privileged: true
+        volumeMounts:
+        - name: mntdatas3fs
+          mountPath: /var/s3fs:shared
         ports:
         - containerPort: 3306
         env:
@@ -32,6 +35,10 @@ spec:
             secretKeyRef:
               name: ifotos-secret
               key: ifotosdb-root-password
+      volumes:
+      - name: mntdatas3fs
+        hostPath:
+        path: /home/s3data
 ---
 apiVersion: v1
 kind: Service
