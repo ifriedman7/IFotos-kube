@@ -23,17 +23,17 @@ spec:
         - name: ME_CONFIG_IFOTOSDB_ADMINUSERNAME
           valueFrom:
             secretKeyRef:
-              name: ifotosdb-secret
-              key: ifotos-root-username
+              name: ifotos-secret
+              key: ifotosdb-root-username
         - name: ME_CONFIG_IFOTOSDB_ADMINPASSWORD
           valueFrom: 
             secretKeyRef:
-              name: ifotosdb-secret
-              key: ifotos-root-password
+              name: ifotos-secret
+              key: ifotosdb-root-password
         - name: ME_CONFIG_IFOTOSDB_SERVER
           valueFrom: 
             configMapKeyRef:
-              name: ifotosdb-configmap
+              name: ifotos-configmap
               key: database_url
 ---
 #External service-- Type Loadbalancer

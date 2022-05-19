@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ifotosdb-configmap
+  name: ifotos-configmap
 data:
   database_url: ifotosdb-service
+  AWS_S3_BUCKET: ike-bucket-small

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ifotosdb-deployment
+  name: ifotosdb
   labels:
     app: ifotosdb
 spec:
@@ -25,13 +25,13 @@ spec:
         - name: IFOTOS_INITDB_ROOT_USERNAME
           valueFrom:
             secretKeyRef:
-              name: ifotosdb-secret
+              name: ifotos-secret
               key: ifotosdb-root-username
         - name: IFOTOS_INITDB_ROOT_PASSWORD
           valueFrom: 
             secretKeyRef:
-              name: ifotosdb-secret
-              key: ifotos-root-password
+              name: ifotos-secret
+              key: ifotosdb-root-password
 ---
 apiVersion: v1
 kind: Service
