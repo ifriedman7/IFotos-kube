@@ -2,13 +2,15 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: ifotos-s3provider
-  labels:
-    app: ifotos-s3provider
 spec:
+  selector: 
+    matchLabels:
+      name: ifotos-s3provider
   template:
     metadata:
-      labels:
-        app: ifotos-s3provider
+      labels: 
+        name: ifotos-s3provider
+
     spec:
       containers:
       - name: ifotos-s3provider
