@@ -14,25 +14,25 @@ spec:
     spec:
       containers:
       - name: ifotos-s3provider
-#        image: efrecon/s3fs
-        image: meain/s3-mounter
+        image: efrecon/s3fs
+#        image: meain/s3-mounter
         securityContext:
           privileged: true
         env:
- #       - name: AWS_S3_ACCESS_KEY_ID
-        - name: AWS_KEY
+        - name: AWS_S3_ACCESS_KEY_ID
+ #       - name: AWS_KEY
           valueFrom:
             secretKeyRef:
               name: ifotos-secret
               key: AWS_S3_ACCESS_KEY_ID
- #       - name: AWS_S3_SECRET_ACCESS_KEY
-        - name: AWS_SECRET_KEY
+        - name: AWS_S3_SECRET_ACCESS_KEY
+ #       - name: AWS_SECRET_KEY
           valueFrom: 
             secretKeyRef:
               name: ifotos-secret
               key: AWS_S3_SECRET_ACCESS_KEY
- #       - name: AWS_S3_BUCKET
-        - name: S3_BUCKET
+        - name: AWS_S3_BUCKET
+ #       - name: S3_BUCKET
           valueFrom: 
             configMapKeyRef:
               name: ifotos-configmap
@@ -41,7 +41,8 @@ spec:
         - name: devfuse
           mountPath: /dev/fuse
         - name: mntdatas3fs
-          mountPath: /var/s3fs:shared
+ #         mountPath: /var/s3fs
+          mountPath: /opt/s3fs/bucket
       volumes:
       - name: devfuse
         hostPath:
