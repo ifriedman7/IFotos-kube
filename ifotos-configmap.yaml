@@ -5,4 +5,4 @@ metadata:
 data:
   database_url: ifotosdb-service
   AWS_S3_BUCKET: ike-bucket-small
-  AWS_S3_MOUNT: /var/s3fs:shared
+  AWS_S3_MOUNT: /var/s3fs:rshared
