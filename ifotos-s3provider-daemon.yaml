@@ -41,7 +41,7 @@ spec:
         - name: devfuse
           mountPath: /dev/fuse
         - name: mntdatas3fs
-          mountPath: /var/s3fs:rshared
+          mountPath: /var/s3fs:shared
       volumes:
       - name: devfuse
         hostPath:
