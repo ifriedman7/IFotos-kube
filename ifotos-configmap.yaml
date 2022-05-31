@@ -6,7 +6,7 @@ data:
   database_url: ifotosdb-service
   AWS_S3_BUCKET: ike-bucket-small
   AWS_S3_MOUNT: /var/s3:shared
-  S3_BUCKET: ike-bucket-small
   S3_URL: https://s3-us-east-1.amazonaws.com/
+  S3_BUCKET: ike-bucket-small
   S3_REGION: us-east-1
 
