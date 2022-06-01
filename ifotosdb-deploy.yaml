@@ -21,7 +21,7 @@ spec:
           privileged: true
         volumeMounts:
         - name: mntdatas3fs
-          mountPath: /var/s3fs:shared
+          mountPath: /var/s3fs
         ports:
         - containerPort: 3306
         env:
@@ -38,7 +38,7 @@ spec:
       volumes:
       - name: mntdatas3fs
         hostPath:
-          path: /var/s3fs
+          path: /var/s3fs:shared
 ---
 apiVersion: v1
 kind: Service
