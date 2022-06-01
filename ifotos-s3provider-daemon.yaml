@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ifotos-s3provider
-        image: ifriedman7/kube-s3fs:1.2
+        image: ifriedman7/kube-s3fs:1.3
  #       image: efrecon/s3fs
 #        image: meain/s3-mounter
         securityContext:
