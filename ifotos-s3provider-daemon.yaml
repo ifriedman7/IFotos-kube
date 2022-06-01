@@ -38,28 +38,20 @@ spec:
             configMapKeyRef:
               name: ifotos-configmap
               key: AWS_S3_BUCKET
+        - name: MNT_POINT
+          valueFrom: 
+            configMapKeyRef:
+              name: ifotos-configmap
+              key: AWS_S3_MOUNT
         volumeMounts:
         - name: devfuse
           mountPath: /dev/fuse
         - name: mntdatas3fs
-          mountPath: /var/s3:shared
- #         mountPath: /opt/s3fs/bucket
+          mountPath: /var/s3fs:shared
       volumes:
       - name: devfuse
         hostPath:
           path: /dev/fuse
       - name: mntdatas3fs
         hostPath:
-          path: /home/s3data
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ifotos-s3service
-spec:
-  selector:
-    app: ifotos-s3provider
-  ports:
-    - protocol: TCP
-      port: 443
-      targetPort: 443
+          path: /var/s3fs
