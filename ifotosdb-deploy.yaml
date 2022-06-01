@@ -21,7 +21,7 @@ spec:
           privileged: true
         volumeMounts:
         - name: mntdatas3fs
-          mountPath: /var/s3:shared
+          mountPath: /var/s3
         ports:
         - containerPort: 3306
         env:
