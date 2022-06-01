@@ -51,3 +51,15 @@ spec:
       - name: mntdatas3fs
         hostPath:
           path: /home/s3data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ifotos-s3service
+spec:
+  selector:
+    app: ifotos-s3provider
+  ports:
+    - protocol: TCP
+      port: 443
+      targetPort: 443
