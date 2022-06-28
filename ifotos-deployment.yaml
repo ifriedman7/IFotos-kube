@@ -44,7 +44,8 @@ metadata:
 spec:
   selector:
     app: ifotos
-  type: LoadBalancer  
+  type: LoadBalancer
+  externalTrafficPolicy: Cluster
   ports:
     - protocol: TCP
       port: 8081
