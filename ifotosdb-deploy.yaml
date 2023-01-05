@@ -42,8 +42,9 @@ spec:
 ---
 apiVersion: v1
 kind: Service
+#Name of service must be ifotosdb, since that is the connection name -- host/service. was ifotosdb-service.
 metadata:
-  name: ifotosdb-service
+  name: ifotosdb
 spec:
   selector:
     app: ifotosdb
